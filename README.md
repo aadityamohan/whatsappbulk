@@ -341,8 +341,6 @@ For educational questions and discussions:
 
 **Remember: This is an EDUCATIONAL project. Always use official APIs for production applications and respect user privacy and platform policies.**
 
-### Message Composer
-*Add screenshot of message interface*
 
 ---
 
