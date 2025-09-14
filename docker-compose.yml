@@ -1,0 +1,77 @@
+version: "3.8"
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: whatsapp-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: whatsapp123
+      MONGO_INITDB_DATABASE: whatsapp_bulk
+    networks:
+      - whatsapp-network
+
+  # WhatsApp Bulk Sender Application
+  whatsapp-app:
+    build: .
+    container_name: whatsapp-bulk-sender
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+      - ./sessions:/app/sessions
+      - ./backend/uploads:/app/backend/uploads
+      - ./backend/logs:/app/backend/logs
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://admin:whatsapp123@mongodb:27017/whatsapp_bulk?authSource=admin
+      - PORT=3000
+      - RATE_LIMIT_WINDOW=15
+      - RATE_LIMIT_MAX_REQUESTS=100
+      - MAX_FILE_SIZE=5242880
+      - DEFAULT_MESSAGE_DELAY=10
+      - MAX_RETRY_ATTEMPTS=3
+    depends_on:
+      - mongodb
+    networks:
+      - whatsapp-network
+    # Add security options
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+    tmpfs:
+      - /tmp
+      - /var/tmp
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: whatsapp-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - whatsapp-app
+    networks:
+      - whatsapp-network
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  whatsapp-network:
+    driver: bridge

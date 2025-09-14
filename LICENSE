@@ -1,0 +1,63 @@
+MIT License
+
+Copyright (c) 2024 WhatsApp Bulk Sender - Educational
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+IMPORTANT EDUCATIONAL DISCLAIMER:
+
+This software is provided for EDUCATIONAL PURPOSES ONLY. By using this software,
+you agree to the following terms:
+
+1. EDUCATIONAL USE ONLY: This software is designed to help users understand
+   how bulk messaging systems work technically. It should NOT be used for
+   actual bulk messaging or spam.
+
+2. COMPLIANCE WITH LAWS: You must comply with all applicable laws and
+   regulations in your jurisdiction, including but not limited to:
+
+   - Anti-spam laws (CAN-SPAM Act, CASL, GDPR)
+   - Privacy laws and data protection regulations
+   - Telecommunications regulations
+
+3. PLATFORM TERMS OF SERVICE: You must comply with WhatsApp's Terms of Service
+   and any other platform policies. Automated messaging may violate these terms
+   and result in account suspension or termination.
+
+4. NO WARRANTY FOR MISUSE: The authors and contributors are not responsible
+   for any misuse of this software, including but not limited to:
+
+   - Spam or unsolicited messages
+   - Violation of platform terms of service
+   - Legal violations or penalties
+   - Account suspensions or bans
+
+5. CONSENT REQUIREMENT: If you use this software for any messaging purposes,
+   you must obtain explicit consent from all recipients and provide clear
+   opt-out mechanisms.
+
+6. PROFESSIONAL USE: For commercial or professional messaging needs, use
+   official APIs and services provided by the platforms (e.g., WhatsApp Business API).
+
+By downloading, installing, or using this software, you acknowledge that you
+have read, understood, and agree to these terms. If you do not agree to these
+terms, do not use this software.
+
+For questions about this license or the software, please contact the developers
+through the official repository or documentation.

@@ -1,0 +1,79 @@
+{
+  "name": "whatsapp-bulk-sender-app",
+  "version": "1.0.0",
+  "description": "WhatsApp Bulk Sender - Complete Educational Application",
+  "main": "backend/server.js",
+  "homepage": "https://github.com/yourusername/whatsapp-bulk-sender",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/whatsapp-bulk-sender.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "bulk-messaging",
+    "educational",
+    "nodejs",
+    "express",
+    "mongodb",
+    "desktop-app"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "setup": "npm run install-all && npm run create-dirs",
+    "create-dirs": "mkdir -p logs uploads sessions backend/logs backend/uploads",
+    "build": "npm run install-all",
+    "package": "npm run build && npm run create-package",
+    "create-package": "node scripts/package.js",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "dist": "npm run build && electron-builder",
+    "dist-win": "npm run build && electron-builder --win",
+    "dist-mac": "npm run build && electron-builder --mac",
+    "dist-linux": "npm run build && electron-builder --linux"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.0.1"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.yourcompany.whatsapp-bulk-sender",
+    "productName": "WhatsApp Bulk Sender",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "backend/**/*",
+      "frontend/**/*",
+      "package.json",
+      "env.example",
+      "README.md",
+      "LICENSE"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

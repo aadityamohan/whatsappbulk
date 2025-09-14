@@ -1,0 +1,9 @@
+{
+  "name": "whatsapp-bulk-sender-app",
+  "version": "1.0.0",
+  "description": "WhatsApp Bulk Sender - Complete Educational Application",
+  "buildDate": "2025-09-14T06:09:58.446Z",
+  "nodeVersion": "v24.7.0",
+  "platform": "darwin",
+  "arch": "arm64"
+}
