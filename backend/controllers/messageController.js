@@ -5,7 +5,7 @@ const whatsappSender = require("../utils/whatsappSender");
 // Get all messages
 exports.getAllMessages = async (req, res) => {
   try {
-    const { page = 1, limit = 10, status } = req.query;
+    const { page = 1, limit = 1000, status } = req.query;
     const query = status ? { status } : {};
 
     const messages = await Message.find(query)

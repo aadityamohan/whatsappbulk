@@ -41,7 +41,7 @@ const upload = multer({
 // Get all contacts
 exports.getAllContacts = async (req, res) => {
   try {
-    const { page = 1, limit = 10, status, group } = req.query;
+    const { page = 1, limit = 1000, status, group } = req.query;
     const query = {};
 
     if (status) query.status = status;
@@ -175,6 +175,36 @@ exports.deleteContact = async (req, res) => {
     const { id } = req.params;
     await Contact.findByIdAndDelete(id);
     res.json({ message: "Contact deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Remove all invalid contacts
+exports.removeInvalidContacts = async (req, res) => {
+  try {
+    const result = await Contact.deleteMany({
+      $or: [{ status: "invalid" }, { isWhatsAppValid: false }],
+    });
+
+    res.json({
+      message: `Removed ${result.deletedCount} invalid contacts`,
+      deletedCount: result.deletedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Delete all contacts
+exports.deleteAllContacts = async (req, res) => {
+  try {
+    const result = await Contact.deleteMany({});
+
+    res.json({
+      message: `Deleted ${result.deletedCount} contacts`,
+      deletedCount: result.deletedCount,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
